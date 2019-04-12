@@ -26,6 +26,9 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
+
+// SET NODE_ENV=dev câu lệnh này dùng để thay đổi biến môi trường cho node trong tường hợp này thì node_env sẽ thay đổi thành dev 
+
 console.log(app.get('env'))
 if (app.get('env') !== 'development') {
 	app.locals.pretty = true;
@@ -38,14 +41,16 @@ if (app.get('env') !== 'development') {
 			open: true,
 			port: port,
 			proxy: 'localhost:'+ port,
-			ui: false
-		});
-	}
-} else {
-	server.listen(port, function () {
-		console.log('App listening on port '+ port);
-	});
-}
+      ui: false,
+      });
+    }
+  }
+else 
+  {
+    server.listen(port, function () {
+    console.log('App listening on port '+ port);});
+  }
+
 server.on('error', onError);
 server.on('listening', onListening);
 
