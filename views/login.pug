@@ -1,0 +1,11 @@
+extends layout
+
+block content
+	form(action="/check1", method="post")
+		label(for="") Username   
+			input(type="text" name="username" placeholder="enter the username")
+		br
+		label(for="") Password   
+			input(type="text" name="password" placeholder="enter the password")
+		br
+		button(type="submit") Submit

@@ -7,6 +7,8 @@ var sassMiddleware = require('node-sass-middleware');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var loginRouter = require('./routes/login');
+var checkRouter = require('./routes/check');
 
 var app = express();
 
@@ -30,6 +32,19 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/login', loginRouter);
+app.use('/check', checkRouter);
+app.post('/check1',(req,res,next) =>{
+  console.log(req.body.username, req.body.password)
+  if(req.body.username === "admin" && req.body.password === "admin")
+  {
+    res.redirect('/')
+  }
+  else
+  {
+    res.send('asdasdasad')
+  }
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
